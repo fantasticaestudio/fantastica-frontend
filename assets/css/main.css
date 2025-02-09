@@ -1,1 +1,107 @@
 @import "tailwindcss";
+
+@theme {  
+  --font-header: 'Space Grotesk', sans-serif;
+  --font-body: 'Manrope', sans-serif;
+
+  --color-blue: #191a2b; /* blue-900 */
+  --color-purple: #696fc9; /* purple-600 */
+  --color-purple-lighter: /* --color-purple with 75% opacity */ #696fc9bf;
+  --color-lilac: #d9cff5; /* lilac-300 */
+  --color-lilac-light: #f0eefa; /* lilac-100 */
+  --color-lilac-lighter: #f0eefa7c; /* lilac-100 with 25% opacity */
+  --color-orange: #da5a48; /* orange-500 */
+
+  --card-padding: clamp(1rem, 0.2958rem + 3.0047vw, 3rem);
+  --section-padding: clamp(2rem, 1.2174rem + 3.4783vw, 4rem);
+
+  --nav-height: clamp(1.5rem, 0.9718rem + 2.2535vw, 3rem);
+  --nav-font-size: clamp(0.75rem, 0.325rem + 0.8889vw, 1.125rem);
+
+  --text-2xs: clamp(0.475rem, 0.6083rem + -0.1482vi, 0.5787rem);
+  --text-xs: clamp(0.6331rem, 0.712rem + -0.0876vi, 0.6944rem);
+  --text-sm: clamp(0.8333rem, 0.8303rem + 0.0152vi, 0.844rem);
+  --text-base: clamp(1rem, 0.9643rem + 0.1786vi, 1.125rem);
+  --text-md: clamp(1.2rem, 1.1144rem + 0.428vi, 1.4996rem);
+  --text-lg: clamp(1.44rem, 1.2803rem + 0.7986vi, 1.999rem);
+  --text-xl: clamp(1.728rem, 1.4604rem + 1.3381vi, 2.6647rem);
+  --text-2xl: clamp(2.0736rem, 1.6512rem + 2.112vi, 3.552rem);
+  --text-3xl: clamp(2.4883rem, 1.8465rem + 3.2093vi, 4.7348rem);
+  --text-4xl: clamp(3rem, 2.1429rem + 4.2857vi, 6rem);
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1rem;
+  max-width: 100%;
+
+  @variant sm {
+    padding-inline: 2rem;
+
+  }
+
+  @variant lg {
+    max-width: 1024px;
+  }
+
+  @variant xl {
+    max-width: 1280px;
+  }
+}
+
+html,
+body {
+  min-height: 100%;
+  width: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--color-blue);
+  font-family: var(--font-body);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  position: relative;
+  z-index: 1;
+  font-size: var(--font-base);
+  padding-top: calc(var(--nav-height) + var(--section-padding));
+}
+
+@supports selector(::-webkit-scrollbar) {
+  ::-webkit-scrollbar,
+  ::-webkit-scrollbar:horizontal,
+  ::-webkit-scrollbar:vertical {
+    width: 5px;
+    height: 5px;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb,
+  ::-webkit-scrollbar-thumb:horizontal {
+    border-radius: 10px;
+    background-color: var(--color-purple);
+  }
+
+  ::-webkit-scrollbar-thumb:active {
+    background-color: var(--color-purple);
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-lilac-light);
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: var(--color-lilac-light);
+  }
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  * {
+    scrollbar-color: var(--color-lilac-light) transparent;
+    scrollbar-width: thin;
+  }
+}
